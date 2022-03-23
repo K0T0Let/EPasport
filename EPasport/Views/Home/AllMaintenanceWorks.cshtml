@@ -1,0 +1,25 @@
+﻿@model IEnumerable<EPasport.Models.MaintenanceWorks>
+@{
+    ViewData["Title"] = "Все регламентные работы";
+}
+<!doctype html>
+<div class="bg-secondary text-white">
+    <h3 class="px-4">Регламентные работы</h3>
+        <table class="table mb-5 text-white">
+            <tr>
+                <th scope="col">Наименование регламентной работы</th>
+                <th scope="col">Дата и время выполнения регламентной работы</th>
+                <th scope="col">ФИО сервисного инженера</th>
+                <th scope="col">Стоимость работы (Уе.)</th>
+            </tr>
+        @foreach (var objcet in Model)
+        {
+            <tr>
+                <td>@objcet.Name</td>
+                <td>@objcet.Time</td>
+                <td>@objcet.NameEngineer</td>
+                <td>@objcet.Price</td>
+            </tr>
+        }
+        </table>
+</div>

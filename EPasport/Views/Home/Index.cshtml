@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EPasport.Models.TechObject>
+@{
+    ViewData["Title"] = "Электронный паспорт";
+}
+<!doctype html>
+<div class="bg-secondary text-white">
+    <h3 class="px-4">Электронный паспорт</h3>
+        <table class="table mb-5 text-white">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Номер изделия</th>
+                <th scope="col">Серия изделия</th>
+                <th scope="col">Дата производства</th>
+                <th scope="col">Дата отгрузки</th>
+                <th scope="col">Гарантийный срок</th>
+                <th scope="col">Регламентный работы</th>
+            </tr>
+        @foreach (var objcet in Model)
+        {
+            <tr>
+                <td><a class="btn btn-danger" href="\Home\RemoveTechObject?Id=@objcet.Id&Number=@objcet.Number&Series=@objcet.Series&ProductionDate=@objcet.ProductionDate&ShippingDate=@objcet.ShippingDate&GuaranteePeriod=@objcet.GuaranteePeriod" role="button">Удалить</a></td>
+                <td>@objcet.Number</td>
+                <td>@objcet.Series</td>
+                <td>@objcet.ProductionDate</td>
+                <td>@objcet.ShippingDate</td>
+                <td>@objcet.GuaranteePeriod</td>
+                <td><a class="btn btn-primary" href="/Home/MaintenanceWorks?Id=@objcet.Id" role="button">Подробнее...</a></td>
+            </tr>
+        }
+        </table>
+</div>
+
+<hr />
+<div class="bg-light p-2">
+<h3 class="mb-4">Добавление объекта</h3>
+<form method="post">
+    <div class="d-grid gap-3">
+    <div class="row gy-5">
+        <div class="col-3">
+            <label for="inputEmail4">Номер изделия</label>
+            <input type="number" class="form-control" placeholder="Номер изделия" name="Number">
+        </div>
+        <div class="col-3">
+            <label for="inputEmail4">Серия изделия</label>
+            <input type="number" class="form-control" placeholder="Серия изделия" name="Series">
+        </div>
+        <div class="col-2">
+            <label for="inputEmail4">Дата производства</label>
+            <input type="datetime-local" class="form-control" name="ProductionDate">
+        </div>
+        <div class="col-2">
+            <label for="inputEmail4">Дата отгрузки</label>
+            <input type="datetime-local" class="form-control" name="ShippingDate">
+        </div>
+        <div class="col-2">
+            <label for="inputEmail4">Гарантийный срок</label>
+            <input type="datetime-local" class="form-control" name="GuaranteePeriod">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Добавить</button>
+    </div>
+</form>
+</div>
